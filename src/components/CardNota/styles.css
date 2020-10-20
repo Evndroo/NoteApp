@@ -14,6 +14,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    width: 100%;
   }
   
   .card-nota_texto {
@@ -23,5 +25,11 @@
   
   .card-nota_titulo {
     font-size: 1.2em;
-    margin-right: 12px;
+    margin-right: 24px;
+  }
+
+  .card-nota_delete{
+    cursor: pointer;
+    position: absolute;
+    right: 0;
   }
