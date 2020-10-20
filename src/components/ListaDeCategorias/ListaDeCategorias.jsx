@@ -3,10 +3,15 @@ import "./styles.css"
 
 class ListaDeCategorias extends Component {
 
+    state = {
+        categoria:""
+    }
+
     _handleNewCategoryKeyUp(event){
         //Se foi apertada a tecla enter
         if(event.keyCode === 13){
             if(event.target.value){
+                this.setState({...this.state, categoria:""})
                 this.props.adicionarCategoria(event.target.value)
             }else{
                 //alertar erro de texto vazio
@@ -28,6 +33,8 @@ class ListaDeCategorias extends Component {
                     className="lista-categorias_input" 
                     type="text" 
                     placeholder="Adicionar Categoria"
+                    value={this.state.categoria}
+                    onChange={(event)=> this.setState({...this.state, categoria:event.target.value})}
                     onKeyUp={this._handleNewCategoryKeyUp.bind(this)}
                 />
             </section>
