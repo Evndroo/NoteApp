@@ -10,6 +10,7 @@ class CardNota extends Component {
                     <h6 className="card-nota_titulo">{this.props.nota.titulo}</h6>
                     <DeleteSVG className="card-nota_delete" onClick={this.props.deletarNota} />
                 </header>
+                <h6>{this.props.nota.categoria}</h6>
                 <p className="card-nota_texto">{this.props.nota.texto}</p>
             </section>
         );
