@@ -20,8 +20,8 @@ export default class Notas{
     }
 
     notificar(){
-        this._inscritos.forEach(func=> func(this.notas))
         localStorage.setItem(this._localStoragePropertie, JSON.stringify(this.notas));
+        this._inscritos.forEach(func=> func(this.notas))
     }
 
     adicionarNota(titulo, texto, categoria){

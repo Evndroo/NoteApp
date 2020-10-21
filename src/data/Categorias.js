@@ -16,12 +16,18 @@ export default class Categorias{
     }
 
     notificar(){
-        this._inscritos.forEach(func=> func(this.categorias))
         localStorage.setItem(this._localStoragePropertie, JSON.stringify(this.categorias))
+        this._inscritos.forEach(func=> func(this.categorias))
     }
 
     adicionarCategoria(categoria){
         this.categorias.push(categoria);
         this.notificar();
+    }
+
+    removerCategoria(categoria){
+        console.log(this.categorias);
+        this.categorias = this.categorias.filter((cat) => categoria !== cat)
+        this.notificar()
     }
 }

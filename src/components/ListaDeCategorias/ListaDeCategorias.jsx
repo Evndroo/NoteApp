@@ -6,8 +6,14 @@ class ListaDeCategorias extends Component {
     constructor() {
         super();
         this.state = {
-            categoria: ""
+            categoria: "",
+            categorias:[]
         }
+        this.newCategoryBind = this._novasCategorias.bind(this);
+    }
+
+    _novasCategorias(categorias){
+        this.setState({...this.state, categorias})
     }
 
     _handleNewCategoryKeyUp(event) {
@@ -22,13 +28,28 @@ class ListaDeCategorias extends Component {
         }
     }
 
+    componentDidMount(){
+        this.setState({...this.state, categorias: this.props.categorias.categorias})
+        this.props.categorias.inscrever(this.newCategoryBind)
+    }
+
+    componentWillUnmount(){
+        this.props.categorias.desinscrever(this.newCategoryBind);
+    }
+
     render() {
         return (
             <section className="lista-categorias">
                 <ul className="lista-categorias_lista">
                     {
-                        this.props.categorias.categorias.map((categoria, index) =>
-                            <li key={index} className="lista-categorias_item">{categoria}</li>
+                        this.state.categorias.map((categoria, index) =>
+                            <li 
+                                key={index} 
+                                className="lista-categorias_item"
+                                onClick={()=>{this.props.deleteCategory(categoria)}}
+                            >
+                                {categoria}
+                            </li>
                         )
                     }
                 </ul>
