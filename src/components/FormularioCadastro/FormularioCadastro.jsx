@@ -45,6 +45,7 @@ class FormularioCadastro extends Component {
     }
 
     componentDidMount(){
+        this.setState({...this.state, categorias: this.props.categorias.categorias})
         this.props.categorias.inscrever(this.newCategoryBind)
     }
 
