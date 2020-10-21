@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {ReactComponent as SendSVG} from "../../assets/images/send-white-18dp.svg";
 import "./styles.css"
 
 class ListaDeCategorias extends Component {
@@ -16,13 +17,19 @@ class ListaDeCategorias extends Component {
         this.setState({...this.state, categorias})
     }
 
+    addCategory(){
+        if(this.state.categoria){
+            this.props.adicionarCategoria(this.state.categoria)
+            this.setState({ ...this.state, categoria: ""})
+        }
+    }
+
     _handleNewCategoryKeyUp(event) {
         event.stopPropagation()
         //Se foi apertada a tecla enter
         if (event.keyCode === 13) {
             if (event.target.value) {
-                this.props.adicionarCategoria(event.target.value)
-                this.setState({ ...this.state, categoria: ""})
+                this.addCategory(event)
             } else {
                 //alertar erro de texto vazio
             }
@@ -67,6 +74,12 @@ class ListaDeCategorias extends Component {
                     onChange={this._handleChangeCategory.bind(this)}
                     onKeyUp={this._handleNewCategoryKeyUp.bind(this)}
                 />
+                <button
+                    className="lista-categorias_button" 
+                    onClick={this.addCategory.bind(this)}
+                >
+                    <SendSVG/>
+                </button>
             </section>
         );
     }

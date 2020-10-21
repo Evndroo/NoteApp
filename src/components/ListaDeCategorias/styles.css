@@ -16,11 +16,24 @@
     border-radius: 10px;
     font-family: Arial, Helvetica, sans-serif;
     cursor: pointer;
+    display: flex;    
+    align-items: center;
 }
 .lista-categorias_input{
     margin-right: 20px;
+    border: 1px solid var(--secundaria);
+    padding: 0.5em;
 }
 
 .lista-categorias_item:hover{
     text-decoration: line-through;
-  }
+}
+
+.lista-categorias_button{
+    background-color: var(--secundaria);
+    border: 1px solid var(--secundaria);
+    padding: 0.5em;
+    display: flex;
+    margin-left: -41px;
+    margin-right: 20px;
+}
