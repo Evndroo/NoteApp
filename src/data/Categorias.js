@@ -26,7 +26,6 @@ export default class Categorias{
     }
 
     removerCategoria(categoria){
-        console.log(this.categorias);
         this.categorias = this.categorias.filter((cat) => categoria !== cat)
         this.notificar()
     }

@@ -17,15 +17,21 @@ class ListaDeCategorias extends Component {
     }
 
     _handleNewCategoryKeyUp(event) {
+        event.stopPropagation()
         //Se foi apertada a tecla enter
         if (event.keyCode === 13) {
             if (event.target.value) {
-                this.setState({ ...this.state, categoria: "" })
                 this.props.adicionarCategoria(event.target.value)
+                this.setState({ ...this.state, categoria: ""})
             } else {
                 //alertar erro de texto vazio
             }
         }
+    }
+
+    _handleChangeCategory(event){
+        event.stopPropagation();
+        this.setState({ ...this.state, categoria: event.target.value });
     }
 
     componentDidMount(){
@@ -58,7 +64,7 @@ class ListaDeCategorias extends Component {
                     type="text"
                     placeholder="Adicionar Categoria"
                     value={this.state.categoria}
-                    onChange={(event) => this.setState({ ...this.state, categoria: event.target.value })}
+                    onChange={this._handleChangeCategory.bind(this)}
                     onKeyUp={this._handleNewCategoryKeyUp.bind(this)}
                 />
             </section>
