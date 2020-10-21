@@ -1,7 +1,14 @@
 export default class Notas{
+
+    _localStoragePropertie = "notas";
+
     constructor(){
         this.notas = [];
         this._inscritos = [];
+
+        if(localStorage.getItem(this._localStoragePropertie)){
+            this.notas = JSON.parse(localStorage.getItem(this._localStoragePropertie))
+        }
     }
 
     inscrever(func){
@@ -14,6 +21,7 @@ export default class Notas{
 
     notificar(){
         this._inscritos.forEach(func=> func(this.notas))
+        localStorage.setItem(this._localStoragePropertie, JSON.stringify(this.notas));
     }
 
     adicionarNota(titulo, texto, categoria){
