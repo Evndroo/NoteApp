@@ -15,7 +15,7 @@ class ListaDeNotas extends Component {
     
 
     componentDidMount(){
-        this.setState({...this.state, notas: this.props.notas.notas})
+        this.setState({...this.state, notas: this.props.notas.notasFiltradas})
         this.props.notas.inscrever(this.newNoteBind);
     }
 
